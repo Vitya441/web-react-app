@@ -1,0 +1,350 @@
+.registration-container {
+  max-width: 800px;
+  /* max-height: 1000px; */
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+body {
+  background-color:aliceblue;
+}
+
+
+
+/* старое, вроде слилось нормально */
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовка */
+  .auth-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Стили для текстовых полей и меток */
+  .auth-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .auth-container input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+  }
+  
+  /* Стили для кнопки */
+  .auth-container button[type='submit'] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .auth-container button[type='submit']:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+  }
+  
+  /* Дополнительные стили для кнопки при мобильной версии */
+  @media (max-width: 768px) {
+    .auth-container button[type='submit'] {
+      font-size: 16px;
+    }
+  }
+  
+
+/* Стилизация для компонента App.jsx
+///////////////////////////////////// 
+*/
+
+/* Базовые стили для контейнера приложения */
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Стили для навигационных ссылок */
+  .nav-links {
+    margin-top: 20px;
+  }
+  
+  .nav-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+
+  /*  РЕГИСТРАЦИЯ  */
+
+  /* Стили для контейнера формы регистрации */
+.registration-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовка */
+  .registration-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Стили для текстовых полей и меток */
+  .registration-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .registration-container input[type='email'],
+  .registration-container input[type='password'],
+  .registration-container input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+  }
+  
+  /* Стили для кнопки */
+  .registration-container button[type='submit'] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .registration-container button[type='submit']:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+  }
+  
+  /* АККАУНТ */
+
+  /* Стили для контейнера аккаунта пользователя */
+.account-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовка */
+  .account-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Стили для имени пользователя */
+  .account-container h3 {
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для кнопки */
+  .account-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: red; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .account-container button:hover {
+    background-color: #c82333; /* Цвет фона кнопки при наведении */
+  }
+  
+  /* СПИСОК УСЛУГ */
+
+  /* Стили для контейнера списка услуг */
+.services-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовка */
+  .services-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Стили для отдельной услуги */
+  .services-container .service {
+    margin-bottom: 20px;
+  }
+  
+  .services-container .service h2 {
+    margin-bottom: 10px;
+  }
+  
+  .services-container .service a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .services-container .service a:hover {
+    background-color: #0056b3;
+  }
+
+  /* ПОДРОБНАЯ ИНФОМРАЦИЮ ОБ УСЛУГЕ */
+
+  /* Стили для контейнера деталей услуги */
+.appointment-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для заголовков */
+  .appointment-details-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для ссылок "Отзывы" */
+  .appointment-details-container a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .appointment-details-container a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ДОБАВЛЕНИЕ ОТЗЫВА */
+  
+  /* Стили для формы добавления отзыва */
+.review-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для текстового поля */
+  .review-form textarea {
+    width: 100%;
+    height: 150px; /* Высота текстового поля */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Запрещаем изменение размеров текстового поля */
+  }
+  
+  /* Стили для кнопки */
+  .review-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .review-form button:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+  }
+
+
+  /* Добавление услуги */
+
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+  
+  

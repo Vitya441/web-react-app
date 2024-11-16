@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "email": "vitya@mail.ru",
+      "password": "$2a$10$0TEcc2ZNht4YV0CuJUnlCOozqxNWSCCpqNFN5hvuvYaSLMY0BjyeO",
+      "username": "vitya",
+      "age": "123",
+      "role": "USER",
+      "id": 1
+    },
+    {
+      "email": "nikita@mail.ru",
+      "password": "$2a$10$PA.1aTYo6X.EZAoxSbKn0eo/mEwbnA/Af3n3wVBNiLlOL6/gU.Es2",
+      "username": "nikita",
+      "age": "20",
+      "role": "USER",
+      "id": 2
+    },
+    {
+      "email": "admin@mail.ru",
+      "password": "$2a$10$tycgvOCQ6NrLSA.KHThYsOaX.sP0MHYC.3H8BgAJqL5k7EkcWGo7y",
+      "username": "admin",
+      "age": "20",
+      "role": "ADMIN",
+      "id": 3
+    },
+    {
+      "email": "user@mail.ru",
+      "password": "$2a$10$htMsy8tKyXOU28cJJVAonOrr0Mi.rSetSPD/8ePfdPdWfNUk2orDS",
+      "username": "user",
+      "age": "25",
+      "role": "USER",
+      "id": 4
+    }
+  ]
+}
