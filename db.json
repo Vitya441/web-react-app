@@ -31,6 +31,14 @@
       "age": "25",
       "role": "USER",
       "id": 4
+    },
+    {
+      "email": "viktor@gmail.com",
+      "password": "$2a$10$uI0TN31F91fHQiBMzTBdN.qlI4jE/hECbsTmAJK9WTqIfXBTopbHe",
+      "username": "viktor",
+      "age": "20",
+      "role": "USER",
+      "id": 5
     }
   ]
 }

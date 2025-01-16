@@ -35,65 +35,10 @@ function Home() {
 
             <h3>Имя пользователя: {user.username}</h3>
 
-            {userRole === "ADMIN" ? <AdminAuthNavigation /> : <UserAuthNavigation />}  
+            {userRole === "Admin" ? <AdminAuthNavigation /> : <UserAuthNavigation />}  
 
             <button onClick={handleLogout} className="btn btn-danger mt-3">Выйти из аккаунта</button>
         </div>
-
-
-
-        // <div>
-        //     <h1>Мой аккаунт</h1>
-
-        //     <h3>Имя пользователя: {user.username}</h3>
-
-        //     {userRole === "ADMIN" ? <AdminAuthNavigation /> : <UserAuthNavigation />}  
-        
-        //     <button onClick={handleLogout}>Выйти из аккаунта</button>
-            
-
-        // </div>
-
-
-
-
-
-        // <Router>
-
-        //     <nav>
-        //         <h1>
-        //             <Link to={"/appointments"}>Список услуг </Link>
-        //         </h1>
-
-        //         <h1>
-        //             <Link to={"/addService"}>Добавить талон услуги (для админа)</Link>
-        //         </h1>
-
-        //         <h1>
-        //             <Link to={"/registration"}>Зарегестрироваться</Link>
-        //         </h1>
-
-
-        //     </nav>
-
-
-        //     <Routes>
-                
-        //         <Route path='/' element={<h1>Ваш аккаунт</h1>} />
-        //         <Route path='/appointments' element={<ServicesList />} />
-        //         <Route path="/appointments/:id" element={<ShowService />} />
-        //         <Route path="/addService" element={<AddServiceForm />} />
-        //         {/* <Route path="/registration" element={<Registration />} /> */}
-
-        //         <Route path='*' element={<h1>404 NOT FOUND</h1>} />
-
-        //         {/* <Route path='/form' element={<AddTokenForm />}></Route> */}
-
-        //     </Routes>
-
-        // </Router>
-
-        
 
 
     );

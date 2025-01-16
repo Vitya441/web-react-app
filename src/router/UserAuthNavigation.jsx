@@ -10,6 +10,9 @@ function UserAuthNavigation() {
         <h3>
             <Link to="/subscribes">Мои записи</Link>
         </h3>
+        <h3>
+            <Link to="/institutions">Список поликлиник</Link>
+        </h3>
     </nav>
     )
 }

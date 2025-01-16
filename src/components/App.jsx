@@ -14,6 +14,11 @@ import ReviewsList from './ReviewsList';
 import AddReviewForm from './AddReviewForm';
 import Subscribes from './Subscribes';
 import '../index.css';
+import AddClinicForm from './AddClinicForm';
+import ClinicList from './ClinicList';
+
+
+
 /* Flux, Redux */
 
 function App() {
@@ -33,14 +38,7 @@ function App() {
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
                         </ul>
-                        {/* <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login">Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/registration">Registration</Link>
-                            </li>
-                        </ul> */}
+            
                     </div>
                 </div>
             </nav>
@@ -56,6 +54,10 @@ function App() {
                         <Route path="/appointments/:id" element={<ShowService />} />
                         <Route path="/appointments/:id/reviews" element={<ReviewsList />} />
                         <Route path="/subscribes" element={<Subscribes />} />
+                        <Route path="/institutions" element={<ClinicList />} />
+                        <Route path="/addInstitution" element={<AddClinicForm />} />
+                        <Route path="/institutions/:id/reviews" element={<ReviewsList />} />
+
                     </Route>
                     <Route path="*" element={<h1>404 NOT FOUND</h1>} />
                 </Routes>

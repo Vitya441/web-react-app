@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    // {id, serviceId, text, (sender)}
+    // {id, clinicId, text, (sender)}
     reviews: []
 };
 

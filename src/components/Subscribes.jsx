@@ -46,23 +46,6 @@ function Subscribes() {
     );
 
 
-    //     <div className="container mt-4">
-    //         <h1 className="mb-4">Мои записи</h1>
-    //         <ul className="list-group">
-    //             {userSubscribes.map(subscribe => (
-    //                 <li key={subscribe.id} className="list-group-item mb-3">
-                        
-    //                     <p><b>Учреждение:</b> {subscribe.institutionName}</p>
-    //                     <p><b>Услуга:</b> {subscribe.serviceName}</p>
-    //                     <p><b>Врач:</b> {subscribe.doctorName}</p>
-    //                     <p><b>Дата:</b> {subscribe.appointmentDate}</p>
-    //                     <p><b>Пациент:</b> {subscribe.subscriber.username}</p>
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     </div>
-    // );
-    // <h3><p><b>Талон</b></p></h3>
 
 }
 

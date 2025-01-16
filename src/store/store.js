@@ -3,6 +3,7 @@ import appointmentsSlice from './appointmentsSlice';
 import reviewsSlice from './reviewsSlice';
 import authReducer from './authSlice';
 import userSubscribesSlice from './userSubscribesSlice';
+import clinicSlice from './clinicClise';
 
 
 const store = configureStore({
@@ -12,7 +13,8 @@ const store = configureStore({
         auth: authReducer,
         appointments: appointmentsSlice, // Редусеры
         reviews: reviewsSlice,
-        subscribes: userSubscribesSlice // добавляю
+        subscribes: userSubscribesSlice, // добавляю,
+        clinics: clinicSlice
     }
     
 });

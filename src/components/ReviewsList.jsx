@@ -4,24 +4,28 @@ import { Link, useParams } from "react-router-dom";
 import AddReviewForm from './AddReviewForm';
 import ReactStars from "react-rating-stars-component";
 
-///// Объеденил add и print /////
 function ReviewsList() {
 
-    const {id} = useParams();
-    console.log("ID услуги: ", id);
+    // const clinicIdObj = useParams();
+    // const clinicId = clinicIdObj.id; // use params возвращает объект, нам нужно поле этого объекта - ID
 
-    const reviews = useSelector(state => state.reviews.reviews.filter(review => review.serviceId === id));
 
+    const { id: clinicId } = useParams(); // Деструктуризация и сразу извлекаем clinicId
+
+
+    console.log("Clinic ID: ", clinicId);
+
+
+    const reviews = useSelector(state => state.reviews.reviews.filter(review => review.clinicId === clinicId));
+    
+    console.log("Список отзывов текущей поликлинники: ", reviews);
 
     
     return (
-
         <div className="">
             <div className="card">
                 <div className="card-body">
-                    
-                    <AddReviewForm />
-
+                    <AddReviewForm clinicId={clinicId} /> {/* Передаем ID поликлиники */}
                     <h2 className="mt-4">Отзывы:</h2>
                     <ul className="list-group list-group-flush">
                         {reviews.map(review => (
@@ -46,41 +50,10 @@ function ReviewsList() {
                 </div>
             </div>
         </div>
-
-
-
-
-        // <div>
-
-        //     <AddReviewForm />
-        
-        //     <h2>Отзывы:</h2>
-        //     <ul>
-        //         {reviews.map(review => (
-        //             <li key={review.id}>
-        //                  <b>Сообщение:</b> {review.text} <br />
-        //                  <b>Время отправления:</b> {review.time} <br/>
-        //                  <b>Отправитель:</b> {review.sender.username} <br/>
-        //                  <b>Оценка:</b> 
-        //                  {review.rating} <br/>
-        //                     <div>  
-        //                         <ReactStars
-        //                             count={review.rating}
-        //                             size={24}
-        //                             activeColor="#ffd700"
-        //                         />   
-        //                         ----------------------------------------------------------------------
-        //                     </div>                   
-
-        //             </li>
-        //         ))}
-
-
-        //     </ul>
-            
-        // </div>
-
     );
+
+
+
 }
 
 export default ReviewsList;

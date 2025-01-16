@@ -33,9 +33,9 @@ function Registration() {
           newErrors.email = 'Email is invalid';
       }
 
-      if (!age) {
-        newErrors.age = "age is required";
-      }
+      // if (!age) {
+      //   newErrors.age = "age is required";
+      // }
 
       if (!password) {
           newErrors.password = 'Password is required';
@@ -53,7 +53,8 @@ function Registration() {
       e.preventDefault();
       if (validateForm()) {
           try {
-            const response = await axios.post('http://localhost:3000/register', { email, password, username, age, role });
+            // const response = await axios.post('http://localhost:3000/register', { email, password, username, age, role });
+            const response = await axios.post("http://localhost:8080/auth/signup", {username, email, password})
             console.log('Registration successfully: ', response.data);        
             navigate("/login");
             //РЕДИРЕКТ НА LOGIN 
@@ -111,18 +112,6 @@ function Registration() {
       {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
     </div>
 
-    <div className="form-outline mb-4">
-      <input
-        type="text"
-        id="age"
-        className="form-control"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-      />
-      <label className="form-label" htmlFor="age">Age</label>
-      {errors.age && <div style={{ color: 'red' }}>{errors.age}</div>}
-    </div>
-
     <button type='submit' className="btn btn-primary btn-block mb-4">Зарегистрироваться</button>
 
     <div className="text-center">
@@ -144,90 +133,6 @@ function Registration() {
   </form>
 </div>
       
-
-      
-
-      // <div>
-      //   <h1>Регистрация</h1>
-      //   <form onSubmit={handleRegistration}>
-      //     <div>
-      //       <label>Email</label>
-              
-      //         <input
-      //          type='text'
-      //          value={email} 
-      //          onChange={(e) => setEmail(e.target.value)}
-      //          />
-      //          {errors.email &&
-      //                   <div style={{color: "red"}}>{errors.email}</div>
-      //                   // <span className="error-message">
-      //                   //     {errors.email}
-      //                   // </span>
-      //           }
-      //     </div>
-
-      //     <div>
-      //       <label>
-      //         Password
-      //         <input
-      //          type='text'
-      //          value={password} 
-      //          onChange={(e) => setPassword(e.target.value)}
-      //          />
-      //          {errors.password &&
-      //                   <div style={{color: "red"}}>{errors.password}</div>
-      //           }
-
-      //       </label>
-      //     </div>
-
-      //     <div>
-      //       <label>
-      //         Username
-      //         <input
-      //          type='text'
-      //          value={username} 
-      //          onChange={(e) => setUsername(e.target.value)}
-      //          />
-      //           {errors.username &&
-      //                   <div style={{color: "red"}}>{errors.username}</div>
-      //           }
-      //       </label>
-      //     </div>
-
-      //     <div>
-      //       <label>
-      //         Age
-      //         <input
-      //          type='text'
-      //          value={age} 
-      //          onChange={(e) => setAge(e.target.value)}
-      //          />
-      //          {errors.age &&
-      //                   <div style={{color: "red"}}>{errors.age}</div>
-      //           }
-      //       </label>
-      //     </div>
-
-      //     <button type='submit'>Зарегистрироваться</button>
-
-      //   </form>
-      // </div>
-
-
-
-
-
-        // <div>
-            
-        //     <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        //     <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        //     <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-        //     <input type="text" placeholder="Age" value={age} onChange={e => setAge(e.target.value)} />
-        //     <button onClick={handleRegister}>Register</button> 
-
-
-        // </div>
     );
 
 }

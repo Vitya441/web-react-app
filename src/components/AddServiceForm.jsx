@@ -2,66 +2,80 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addAppointment } from "../store/appointmentsSlice";
+import axios from "axios";
 
 // Мэнэджер создает талон
-function AddServiceForm() {
+function AddServiceForm({ clinicId, onClose }) {
 
-    const [institutionName, setInstitutionName] = useState("");
     const [serviceName, setServiceName] = useState("");
     const [doctorName, setDoctorName] = useState("");
     const [appointmentDate, setAppointmentDate] = useState("");
     const [appointmentTime, setAppointmentTime] = useState("");
+
+    const dispatch = useDispatch();
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     const id = Date.now().toString(); // Уникальный ID
+    //     dispatch(addAppointment({id: id, clinicId: clinicId, serviceName: serviceName, doctorName: doctorName, 
+    //         appointmentDate: appointmentDate, appointmentTime: appointmentTime}));
+
+    //     // Очиащаем форму после добавления
+    //     setServiceName("");
+    //     setDoctorName("");
+    //     setAppointmentDate("");
+    //     setAppointmentTime("")
+
+    //     onClose();
+    // }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // setLoading(true);
+        // setError(null);
+
+        try {
+            // Отправка данных на сервер
+            const response = await axios.post("http://localhost:8080/tickets", {
+                service_name: serviceName,
+                doctor_name: doctorName,
+                appointment_date: appointmentDate,
+                appointment_time: appointmentTime,
+                clinic_id: clinicId
+            });
+
+            // Получение данных из ответа сервера
+            const savedAppointment = response.data;
+
+            // Обновление состояния Redux
+            dispatch(addAppointment(savedAppointment));
+
+            // Очистка формы после добавления
+            setServiceName("");
+            setDoctorName("");
+            setAppointmentDate("");
+            setAppointmentTime("");
+
+            onClose(); // Закрытие формы
+        } catch (err) {
+            console.error("Error saving appointment:", err);
+            // setError("Не удалось сохранить запись. Попробуйте ещё раз.");
+        } finally {
+            // setLoading(false);
+        }
+    };
     
 
-    const onInstitutionNameChanged = e => setInstitutionName(e.target.value);
     const onServiceNameChanged = e => setServiceName(e.target.value);
     const onDoctorNameChanged = e => setDoctorName(e.target.value);
     const onAppointmentDateChanged = e => setAppointmentDate(e.target.value);
     const onAppointmentTimeChanged = e => setAppointmentTime(e.target.value);
 
-    // Расчитываю id следующего талона
-    const id = useSelector(state => state.appointments.appointments.length);
-    // const id = nanoid();
-
-    const dispatch = useDispatch();
-
-    // Действие при нажатии на кнопку sumbit
-    const onSaveServiceClicked = (event) => {
-
-        event.preventDefault();
-        if (institutionName && serviceName && doctorName && appointmentDate) {
-
-            // Добавить логику сохранения в БД (POST http://localhost:3000/appointments)
-
-            dispatch(addAppointment({id: id, institutionName: institutionName, serviceName: serviceName, doctorName: doctorName, 
-              appointmentDate: appointmentDate, appointmentTime: appointmentTime}));
-        }
-          console.log(appointmentDate);
-        setInstitutionName("");
-        setServiceName("");
-        setDoctorName("");
-        setAppointmentDate("");
-        setAppointmentTime("")
-        
-        
-    };
 
     return (
 
       <div>
-            <form onSubmit={onSaveServiceClicked} className="p-4 shadow-sm rounded bg-light">
-                <div className="form-group mb-3">
-                    <label htmlFor="institutionName">Учреждение</label>
-                    <input 
-                        type="text"
-                        className="form-control"
-                        id="institutionName"
-                        placeholder="Введите название учреждения"
-                        value={institutionName}
-                        onChange={onInstitutionNameChanged}
-                        required
-                    />
-                </div>
+            <form onSubmit={handleSubmit} className="p-4 shadow-sm rounded bg-light">
                 <div className="form-group mb-3">
                     <label htmlFor="serviceName">Услуга</label>
                     <input 
@@ -114,49 +128,6 @@ function AddServiceForm() {
             </form>
         </div>
 
-  
-
-        // <form onSubmit={onSaveServiceClicked} className="registration-container">
-          
-        //             <input 
-        //               type="text"
-        //               placeholder="Enter Institution Name"
-        //               value={institutionName}
-        //               onChange={onInstitutionNameChanged}
-        //               required="true"
-        //             />
-
-
-        //           <input 
-        //             type="text"
-        //             placeholder="Enter Service Name"
-        //             value={serviceName}
-        //             onChange={onServiceNameChanged}
-        //             required="true"
-        //           />
-
-
-
-            
-        //     <input 
-        //       type="text"
-        //       placeholder="Enter Doctor Name"
-        //       value={doctorName}
-        //       onChange={onDoctorNameChanged}
-        //       required="true"
-        //     />
-        //     <input 
-        //       type="date"
-        //       placeholder="Enter Appointment Date"
-        //       value={appointmentDate}
-        //       onChange={onAppointmentDateChanged}
-        //       required="true"
-        //     />
-            
-        //     <button className="btn btn-danger" type="submit">Save Service</button>
-
-
-        // </form>
     );
 
 

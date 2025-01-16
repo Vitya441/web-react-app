@@ -6,43 +6,32 @@ import ReviewsList from "./ReviewsList";
 import { nanoid } from "@reduxjs/toolkit";
 import ReactStars from "react-rating-stars-component";
 
-function AddReviewForm() {
-    // Отправитель комментария
-
+function AddReviewForm({ clinicId }) { // id передаем в паарметрах, т.к это удобно (вызываем этот компонент в спискее поликлинник)
+    
     const [rating, setRating] = useState(0);
-    const ratingChanged = (newRating) => {
-        setRating(newRating);
-    };
-
-    const user = useSelector(state => state.auth.user);
-
-
-    const dispatch = useDispatch();
     const [reviewText, setReviewText] = useState('');
-
-    const {id} = useParams();
-    console.log("ID услуги: ", id);
-
-
+    const user = useSelector(state => state.auth.user);
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const reviewID = nanoid();
-        const dateTime = new Date().toLocaleString();
-        console.log(dateTime);
-        if (reviewText.trim() != '') {
-            //
-            // ЗАМЕНИТЬ НА ЗАПРОС К БД
-            //
-            dispatch(addReview({ id: reviewID, serviceId: id, text: reviewText, time: dateTime, sender: user, rating: rating}));
+        if (reviewText.trim() !== '') {
+            const reviewID = nanoid();
+            const dateTime = new Date().toLocaleString();
+            dispatch(addReview({
+                id: reviewID,
+                clinicId: clinicId,
+                text: reviewText,
+                time: dateTime,
+                sender: user,
+                rating,
+            }));
             setReviewText('');
             setRating(0);
         }
-
-    }
+    };
 
     return (
-
         <form onSubmit={handleSubmit} className="mb-4">
             <div className="form-group">
                 <label htmlFor="reviewText"><b>Оставьте свой отзыв:</b></label>
@@ -63,39 +52,13 @@ function AddReviewForm() {
                         value={rating}
                         size={40}
                         activeColor="#ffd700"
-                        onChange={newRating => setRating(newRating)}
+                        onChange={(newRating) => setRating(newRating)}
                     />
                 </div>
             </div>
             <button type="submit" className="btn btn-primary mt-3">Отправить отзыв</button>
         </form>
-
-
-
-        // <div>
-        //     <form className="review-form" onSubmit={handleSubmit}>
-        //         <textarea
-        //             value={reviewText}
-        //             onChange={(e) => setReviewText(e.target.value)}
-        //             placeholder="Введите ваш отзыв здесь..."
-        //             required
-        //         />
-        //         <div>
-        //             <ReactStars
-        //                 count={5}
-        //                 onChange={ratingChanged}
-        //                 size={24}
-        //                 activeColor="#ffd700"
-        //             />
-        //         </div>
-        //         <button type="submit">Добавить отзыв</button>
-        //     </form>
-        
-
-        // </div>
-        
     );
-
 }
 
 export default AddReviewForm;

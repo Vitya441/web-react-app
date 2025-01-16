@@ -31,16 +31,14 @@ function Login() {
         e.preventDefault();
         if (validateLogin()) {
           try {
-              const response = await axios.post('http://localhost:3000/login', {email, password});
-              console.log('Login successfully: ', response.data.user);
+              const response = await axios.post('http://localhost:8080/auth/login', {email, password});
 
-              const userId = response.data.user.id;
-              const userResponse = await axios.get('http://localhost:3000/users/' + userId);
-              const newUser = userResponse.data;
-              console.log("пользователь: ",  newUser);
-              dispatch(updateUser(userResponse.data));
-              dispatch(login(newUser))
-              navigate('/home');
+              const user = response.data.user;
+              const roles = response.data.roles;
+              user.role = roles[0]; // список , но у меня у каждого пользователя 1 роль
+              console.log('User role = ', user.role);
+              dispatch(login(user))
+              navigate('/home');``
 
           } catch (error) {
               console.error('Login failed:', error.response.data);
