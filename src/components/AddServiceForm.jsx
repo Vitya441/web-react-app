@@ -4,7 +4,6 @@ import { nanoid } from "@reduxjs/toolkit";
 import { addAppointment } from "../store/appointmentsSlice";
 import axios from "axios";
 
-// Мэнэджер создает талон
 function AddServiceForm({ clinicId, onClose }) {
 
     const [serviceName, setServiceName] = useState("");
@@ -13,21 +12,6 @@ function AddServiceForm({ clinicId, onClose }) {
     const [appointmentTime, setAppointmentTime] = useState("");
 
     const dispatch = useDispatch();
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const id = Date.now().toString(); // Уникальный ID
-    //     dispatch(addAppointment({id: id, clinicId: clinicId, serviceName: serviceName, doctorName: doctorName, 
-    //         appointmentDate: appointmentDate, appointmentTime: appointmentTime}));
-
-    //     // Очиащаем форму после добавления
-    //     setServiceName("");
-    //     setDoctorName("");
-    //     setAppointmentDate("");
-    //     setAppointmentTime("")
-
-    //     onClose();
-    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,6 +30,8 @@ function AddServiceForm({ clinicId, onClose }) {
 
             // Получение данных из ответа сервера
             const savedAppointment = response.data;
+
+            console.log('Saved appointment: ', savedAppointment);
 
             // Обновление состояния Redux
             dispatch(addAppointment(savedAppointment));

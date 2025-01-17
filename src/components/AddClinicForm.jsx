@@ -6,7 +6,6 @@ import { nanoid } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-
 function AddClinicForm() {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -16,19 +15,17 @@ function AddClinicForm() {
         e.preventDefault();
          
         try {
+
             const response = await axios.post('http://localhost:8080/clinics', {name, address});
+            const { id: id, name: clinicName, address: clinicAddress } = response.data;
+            dispatch(addClinic({ id, clinicName, clinicAddress }));
+            setName('');
+            setAddress('');
          } catch (error) {
             console.log(error.response.data.details);
             alert(error.response.data.details)
          }
-        
-        const id = nanoid();
-        // TODO: Решить что то с ID, мб просто позволить POSTGRES генерить их, а фронт будет получать из response и 
-        // и сохранять в REDUX
-        dispatch(addClinic({ id, name, address }));
-        setName('');
-        setAddress('');
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit} className="p-4 shadow-sm rounded bg-light">
@@ -57,6 +54,7 @@ function AddClinicForm() {
             <button type="submit" className="btn btn-primary">Добавить поликлинику</button>
         </form>
     );
+
 }
 
 export default AddClinicForm;

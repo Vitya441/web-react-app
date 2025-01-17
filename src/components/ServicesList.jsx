@@ -24,12 +24,14 @@ function ServicesList() {
         fetchClinics();
     }, [dispatch]);
 
+    const availableAppointments = appointments.filter((appointment) => appointment.user_id === null);
+
     return (
 
         <div className="container mt-4">
             <h1>Список услуг:</h1>
                 
-            {appointments.map(appointment => (
+            {availableAppointments.map(appointment => (
                 <div className="service" key={nanoid()}>
                     <h3>{appointment.service_name}</h3>
                     <Link to={`/appointments/${appointment.id}`} className="btn btn-primary">Подробнее</Link> 
